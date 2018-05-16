@@ -1,0 +1,34 @@
+.navbar{
+    margin-bottom:0!important;
+}
+#search-area{
+    margin-top:0;
+    padding:10%;
+    background:orange;
+}
+.col-centered{
+    float:none !important;
+    margin:0 auto;
+}
+#summary h4 {
+    font-size:30px;
+    color:green;
+}
+#summary p {
+    font-size:18px;
+}
+.row li {
+    float:left;
+    margin:4px;
+}
+.row ul {
+    list-style-type:none;
+}
+li a {
+    padding:5px;
+    display:block;
+}
+
+.row li a:hover {
+    color: white;
+}
