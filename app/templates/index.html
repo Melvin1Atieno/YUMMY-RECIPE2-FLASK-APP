@@ -2,70 +2,7 @@
  {% extends "base.html"%}
 
  {% block content %}
-    <!-- search area -->
-    <div class="container-fluid" id="search-area">
-        <div class="row" id="summary">
-            <div class="col-sm-12 col-lg-4">
-                <h4>YUMMY RECIPE</h4>
-                <p>interesting, free recipes. </p>
-                <p>Recipes by foodies from all over the world. </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-centered">
-                <form class="form-horizontal"action="#" id="search-form">
-                    <div class="form-group">
-                        <label class="sr-only" for="search">search</label>
-                        <div class="col-xs-10">
-                            <input type="text" class="form-control" placeholder="Search for a Recipe" name="search"><i fa fa-search></i>
-                        </div>
-                        <div class="col-xs-2">
-                            <button class="btn btn-default">Search</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="row" id="Tsearches">
-            <div class="col-sm-12">
-                <dl>
-                    <dt>Trending searches: </dt>
-                    <dd>
-                        <ul>
-                            <li>
-                                <a href="#">kenya</a>
-                            </li>
-                            <li>
-                                <a href="#">swahili</a>
-                            </li>
-                            <li>
-                                <a href="#">breakfast</a>
-                            </li>
-                        </ul>
-                    </dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <nav class="navbar-nav navbar-light">
-                    <ul class="nav navbar-nav ">
-                        <li class="nav-item active">
-                            <a href="">Trending</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="">New</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="">Folowing</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
+    
     <!-- public recipes -->
     <div class="container">
         <div class="row">
@@ -120,16 +57,25 @@
                 </div>
                 <!-- modal body -->
                 <div class="modal-body">
-                    <form>
+                    <form action="" method="POST">
+                        <!-- genrates a hidden field that includes a token that is used to protect the form against CSRF -->
+                        {{ form.hidden_tag() }}
                         <div class="form-group">
-                            <label for="usr">User Name:</label>
-                            <input type="text" class="form-control" id="usr" placeholder="Enter Username">
+                            {{ form.username.label }}
+                            {{ form.username(size=32)}}
+                            {% for error in form.username.errors%}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
                         </div>
                         <div class="form-group">
-                            <label for="pwd">Password:</label>
-                            <input type="password" class="form-control" id="pwd" placeholder="Enter Password">
+                            {{ form.password.label }}
+                            {{ form.password(size=32)}}
+                            {% for error in form.password.errors%}
+                            <span style="color:red;">[{{ error }}]</span>
+                            {% endfor %}
                         </div>
-                        <button type="button" class="btn btn-success">SUBMIT</button>
+                        <p>{{ form.remember_me() }}{{ form.remember_me.label }}</p>
+                        {{ form.submit()}}
                     </form>
                 </div>
                 <!-- modal footer -->
