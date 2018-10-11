@@ -40,6 +40,8 @@ li a {
     color: white;
 }
 /* let the games begin */
+
 img.img-responsive{
-    height:180%;
+    height:330px;
+    width:650px;
 }
