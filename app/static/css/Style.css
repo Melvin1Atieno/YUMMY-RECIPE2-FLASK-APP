@@ -28,7 +28,18 @@ li a {
     padding:5px;
     display:block;
 }
+.modal-title{
+    background-color: orange;
+    color:black;
+    font-size: 120%;
+    font-weight: bolder;
+    font-family: cursive;
+}
 
 .row li a:hover {
     color: white;
+}
+/* let the games begin */
+img.img-responsive{
+    height:180%;
 }
