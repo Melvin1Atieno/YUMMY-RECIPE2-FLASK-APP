@@ -7,11 +7,12 @@ from app.models import User
 @app.route("/", methods=["GET", "POST"])
 @app.route("/index", methods=["GET", "POST"])
 def index():
-    # form = LoginForm()
     form = SignupForm()
-    if form.validate():
+    if form.validate() and request.method=='POST':
         return redirect("/index")
-    return render_template("index.html", form=form), 200
+    else:
+        flash("Invalid details")
+        return render_template("index.html", form=form), 200
 
 @app.route('/login', methods=["GET","POST"])
 def login():

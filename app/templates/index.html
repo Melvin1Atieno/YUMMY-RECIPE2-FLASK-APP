@@ -60,11 +60,17 @@
                     <form action="" method="POST">
                         <!-- genrates a hidden field that includes a token that is used to protect the form against CSRF -->
                         <div class="form-group">
-                            <label for="username">{{form.username.label}}</label>
+                            <label for="username">{{form.username.label}}
+                                {% for error in form.username.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                {% endfor %}</label>
                             {{form.username(id="username",placeholder="Enter Username",class_="form-control",size=32)}}
                         </div>
                         <div class="form-group">
-                            <label for="password">{{form.password.label}}   </label>
+                            <label for="password">{{form.password.label}}
+                                {% for error in form.password.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                {% endfor %}   </label>
                             {{ form.password(id="password",placeholder="Enter password",class_="form-control",size=32)}}
                         </div>
                         <div class="form-group">
@@ -95,27 +101,52 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="firstname">{{form.firstname.label}}</label>
+                            <label for="firstname">{{form.firstname.label}}
+                                {% for error in form.firstname.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                {% endfor %}
+                            </label>
                             {{form.firstname(id="firstname",placeholder="Enter First Name",class_="form-control",size=32)}}
+                            
                         </div>
                         <div class="form-group">
-                            <label for="lastname">{{form.lastname.label}}</label>
+                            <label for="lastname">{{form.lastname.label}}
+                                {% for error in form.lastname.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                {% endfor %}
+                            </label>
                             {{form.lastname(id="lastname",placeholder="last name",class_="form-control")}}
+                            
                         </div>
                         <div class="form-group">
-                            <label for="email">{{form.email.label}}</label>
+                            <label for="email">{{form.email.label}}
+                                {% for error in form.email.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                {% endfor %}
+                            </label>
                             {{form.email(id="email",type="email",placeholder="email",class_="form-control")}}
                         </div>
                         <div class="form-group">
-                            <label for="pusername">{{form.username.label}}</label>
+                            <label for="pusername">{{form.username.label}}
+                                {% for error in form.username.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                {% endfor %}</label>
                            {{form.username(id="pusername",placeholder="Preferred Username", class_="form-control")}}
                         </div>
                         <div class="form-group">
-                            <label for="ppassword">{{form.password.label}}</label>
+                            <label for="ppassword">{{form.password.label}}
+                                {% for error in form.password.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                {% endfor %}
+                            </label>
                             {{form.password(id="ppassword",placeholder="preferred password",type="password",class_="form-control")}}
                         </div>
                         <div class="form-group">
-                            <label for="cpassword">{{form.confirmpassword.label}}</label>
+                            <label for="cpassword">{{form.confirmpassword.label}}
+                                {% for error in form.username.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                {% endfor %}
+                            </label>
                             {{form.confirmpassword(id="cpassword",type="password",placeholder="Retype Password",class_="form-control")}}
                         </div>
                         <button type="button" class="btn btn-success">SUBMIT</button>
