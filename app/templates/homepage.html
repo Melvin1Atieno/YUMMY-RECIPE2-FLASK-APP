@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
+    {% for recipe in recipes%}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>{{ recipe.recipename}}</h4>
+                <img src="{{recipe.image}}">
+                <p>recipe.description</p>
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#recipe">view recipe</button>
+                <div id="recipe" class="collapse">
+                    <h5>Ingredient</h5>
+                        <p>{{recipe.ingredients}}</p>
+                    <h5>Method</h5>
+                        <p>{{recipe.method}}</p>
+                    <p class="author">{{recipe.author}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

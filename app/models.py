@@ -4,23 +4,25 @@ from flask_login import UserMixin
 from app import login
 # inherits from the db.Model class, a base class for all models from Flask-SQLAlchemy
 
+
+# user loader function
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
 
-class User(UserMixin,db.Model):
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    firstname = db.Column(db.String(32), index=True, unique=True)
-    lastname = db.Column(db.String(32), index=True, unique=True)
+    firstname = db.Column(db.String(32), index=True)
+    lastname = db.Column(db.String(32), index=True)
     email = db.Column(db.String(120), index=True, unique=True)
     username = db.Column(db.String(64), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     recipe = db.relationship("Recipe", backref="author", lazy="dynamic")
-#     def set_password(self,password):
-#         self.password_hash = generate_password_hash(password)
+    def set_password(self,password):
+        self.password_hash = generate_password_hash(password)
     
-#     def check_password(self, password):
-#         return check_password_hash(self.password_hash, password)
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
 # # __repr__  a method that tells python how to print objects usefull for debugging
     def __repr__(self):
         return "<user {}>".format(self.username)
@@ -29,9 +31,10 @@ class User(UserMixin,db.Model):
 class Recipe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     recipename = db.Column(db.String(140), index=True)
-    ingredients = db.Column(db.String(140))
-    method = db.Column(db.String(140))
-    category = db.Column(db.String(32), index=True)
+    description = db.Column(db.String(140))
+    ingredients = db.Column(db.String)
+    method = db.Column(db.String )
+    category = db.Column(db.String(140), index=True)
     timestamp = db.Column(db.DateTime, index=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 

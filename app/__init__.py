@@ -5,11 +5,15 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 
 # make app an instance of the class Flask
+# __name__ python predefined variable, set to the name of the module in which it is used.
 app = Flask(__name__)
 
 login = LoginManager(app)
+
+# making Flask-Login aware of the view function that handles login
+login.login_view = 'login'
+
 app.config.from_object(Config)
-# __name__ python predefined variable, set to the name of the module in which it is used
 # db object that represents the database
 db = SQLAlchemy(app)
 # migrate object that represents the migration engine

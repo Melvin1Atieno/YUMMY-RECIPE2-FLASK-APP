@@ -58,6 +58,7 @@
                 <!-- modal body -->
                 <div class="modal-body">
                     <form action="" method="POST">
+                         {{ form.csrf_token }}
                         <!-- genrates a hidden field that includes a token that is used to protect the form against CSRF -->
                         <div class="form-group">
                             <label for="username">{{form.username.label}}
@@ -99,7 +100,8 @@
                 </div>
                 <!-- modal body -->
                 <div class="modal-body">
-                    <form>
+                    <form action="" method="POST">
+                         {{ form.csrf_token }}
                         <div class="form-group">
                             <label for="firstname">{{form.firstname.label}}
                                 {% for error in form.firstname.errors %}
@@ -149,7 +151,7 @@
                             </label>
                             {{form.confirmpassword(id="cpassword",type="password",placeholder="Retype Password",class_="form-control")}}
                         </div>
-                        <button type="button" class="btn btn-success">SUBMIT</button>
+                        <button type="submit" class="btn btn-success">SUBMIT</button>
                     </form>
                 </div>
                 <!-- modal footer -->
